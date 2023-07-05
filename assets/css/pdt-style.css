@@ -1,0 +1,65 @@
+.v-portfolio-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.v-portfolio-wrapper .v-portfolio-row {
+    display: flex;
+    column-gap: 2%;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.v-portfolio-col {
+    width: 48%;
+    margin-bottom: 40px;
+}
+.v-portfolio-btn{
+    margin-top: 20px;
+    text-align: center;
+}
+.v-portfolio-btn a{
+    background: #000000;
+    color: #ffffff;
+    padding: 5px 30px;
+    border-radius: 30px;
+}
+
+@media screen and (max-width: 1024px){
+    .v-portfolio-wrapper .v-portfolio-row {
+        flex-direction: column;
+        width: 50%;
+        margin: auto;
+        row-gap: 4rem;
+    }
+    .v-portfolio-wrapper .v-portfolio-col {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 840px){
+    .v-portfolio-wrapper .v-portfolio-row {
+        width: 70%;
+    }
+    .v-portfolio-wrapper .v-portfolio-col {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 768px){
+    .v-portfolio-wrapper .v-portfolio-row {
+        width: 80%;
+    }
+}
+@media screen and (max-width: 500px){
+    .v-portfolio-wrapper .v-portfolio-row {
+        width: 100%;
+    }
+    .v-portfolio-col svg{
+        height: 300px;
+    }
+    .v-portfolio-col rect.v-portfolio-tablet-view{
+        height: 230px !important;
+    }
+    .v-portfolio-col foreignObject:last-child{
+        height: 200px;
+    }
+}
