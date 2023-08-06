@@ -56,7 +56,6 @@ class PortfolioDesktopAndTablet
                 'add_new_item' => __('Add New Portfolio Item', 'txtdomain'),
                 'new_item' => __('Add New', 'txtdomain'),
                 'edit_item'          => 'Edit Portfolio Item',
-                'view_item' => __('View Portfolio Item', 'txtdomain'),
                 'not_found' => __('No portfolio items found.', 'txtdomain'),
                 'not_found_in_trash' => __('No portfolio items found in Trash.', 'txtdomain'),
                 'all_items' => __('All Portfolio Items', 'txtdomain'),
@@ -184,25 +183,26 @@ class PortfolioDesktopAndTablet
                 $website_description = get_post_meta(get_the_ID(), 'website_description', true);
 
                 $html .= '<div class="v-portfolio-col">';
-                $html .= '<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="400">';
-                $html .= '<rect x="0" y="0" width="90%" height="100%" fill="#000" rx="20" ry="20" />';
-                $html .= '<foreignObject x="2%" y="5%" width="86%" height="90%" style="overflow-y: scroll;">';
-                $html .= '<div xmlns="http://www.w3.org/1999/xhtml" style="background-color: #fff; font-family: Arial; font-size: 14px; overflow-y: scroll;">';
-                $html .= '<style>::-webkit-scrollbar {width: 0;height: 0;background-color: transparent;}::-webkit-scrollbar-thumb {background-color: transparent;}</style>';
-                $html .= '<img src="' . $desktop_image . '" alt="" style="width: 100%;">';
+                $html .= '<div class="v-portfolio-content">';
+                $html .= '<div class="v-desktop-view">';
+                $html .= '<img src="'.plugin_dir_url(__FILE__).'/assets/images/desktop-overlay.png" class="v-desktop-view-img" alt="desktop">';
+                $html .= '<div class="v-desktop-scroll">';
+                $html .= '<img src="'.$desktop_image.'" alt="desktop">';
                 $html .= '</div>';
-                $html .= '</foreignObject>';
-
-                $html .= '<rect class="v-portfolio-tablet-view" x="60%" y="15%" width="40%" height="300" fill="#000" rx="20" ry="20" />';
-                $html .= '<foreignObject x="62%" y="20%" width="36%" height="260" style="overflow-y: scroll;">';
-                $html .= '<div xmlns="http://www.w3.org/1999/xhtml" style="background-color: #fff; font-family: Arial; font-size: 14px; overflow-y: scroll;">';
-                $html .= '<style>::-webkit-scrollbar {width: 0;height: 0;background-color: transparent;}::-webkit-scrollbar-thumb {background-color: transparent;}</style>';
-                $html .= '<img src="' . $tablet_image . '" alt="" style="width: 100%;">';
                 $html .= '</div>';
-                $html .= '</foreignObject>';
-                $html .= '</svg>';
-                $html .= '<p style="text-align:center;">' . $website_description . '</p>';
-                $html .= '<div class="v-portfolio-btn"><a href="' . $website_link . '">Visit Website</a></div>';
+                $html .= '<div class="v-mobile-view">';
+                $html .= '<img src="'.plugin_dir_url(__FILE__).'/assets/images/mobile-view.png" class="v-mobile-view-img" alt="mobile">';
+                $html .= '<div class="v-mobile-scroll">';
+                $html .= '<img src="'.$tablet_image.'" alt="mobile">';
+                $html .= '</div>';
+                $html .= '</div>';
+                $html .= '<div class="v-content">';
+                $html .= '<p class="c-content-title">'.$website_description.'</p>';
+                $html .= '<a href="'.$website_link.'" target="_blank" class="c-content-button">';
+                $html .= '<img src="'.plugin_dir_url(__FILE__).'/assets/images/link.png" alt="">';
+                $html .= '</a>';
+                $html .= '</div>';
+                $html .= '</div>';
                 $html .= '</div>';
             }
             wp_reset_postdata();
